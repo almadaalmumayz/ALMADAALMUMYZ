@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المدى المميز - استيراد وسائل النقل وملحقاتها</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffc107;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 60, 114, 0.85), rgba(42, 82, 152, 0.85)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="cars" patternUnits="userSpaceOnUse" width="200" height="200"><circle cx="50" cy="50" r="3" fill="%23ffc107" opacity="0.1"/><circle cx="150" cy="100" r="2" fill="%23ffc107" opacity="0.1"/><circle cx="100" cy="150" r="3" fill="%23ffc107" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="%231e3c72"/><rect width="1200" height="600" fill="url(%23cars)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 200px 20px 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffc107;
+            color: #1e3c72;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #ffb300;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #1e3c72;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1f3d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">🚗</span>
+                    <span>المدى المميز</span>
+                </div>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#products">المنتجات</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>المدى المميز</h1>
+            <p>استيراد وسائل النقل وملحقاتها الأصلية</p>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">متخصصون في توفير أفضل وسائل النقل والقطع الأصلية</p>
+            <a href="#contact" class="cta-button">تواصل معنا الآن</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚙</div>
+                    <h3>وسائل النقل</h3>
+                    <p>توفير أحدث موديلات السيارات والشاحنات من أفضل الماركات العالمية</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>ملحقات وسائل النقل</h3>
+                    <p>تجهيزات كاملة وملحقات أصلية لجميع أنواع وسائل النقل</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>قطع الغيار</h3>
+                    <p>قطع غيار أصلية وأصلية بضمان مباشر من المصنعين</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3>التوصيل والشحن</h3>
+                    <p>خدمات شحن آمنة وسريعة إلى جميع أنحاء البلاد</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>استشارات متخصصة</h3>
+                    <p>فريق متخصص لمساعدتك في اختيار أفضل الخيارات المناسبة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>دعم العملاء</h3>
+                    <p>خدمة عملاء متميزة متاحة طوال الوقت للإجابة على استفساراتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">فئات منتجاتنا</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">🚕</div>
+                    <h3>السيارات الخصوصي</h3>
+                    <p>سيارات حديثة واقتصادية للاستخدام الشخصي</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🚚</div>
+                    <h3>شاحنات النقل</h3>
+                    <p>شاحنات ثقيلة وخفيفة متنوعة الأحجام والطاقات</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🏎️</div>
+                    <h3>حافلات الركاب</h3>
+                    <p>حافلات حديثة آمنة وموثوقة للنقل الجماعي</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">⛽</div>
+                    <h3>أنظمة الوقود</h3>
+                    <p>أنظمة وقود حديثة وموفرة للطاقة</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🔋</div>
+                    <h3>أنظمة الكهرباء</h3>
+                    <p>بطاريات وأنظمة كهربائية موثوقة وعالية الجودة</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🛞</div>
+                    <h3>الإطارات والعجلات</h3>
+                    <p>إطارات أصلية من أفضل الماركات العالمية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>تواصل معنا</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📍 العنوان</h3>
+                    <p>طرابلس، ليبيا</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📞 الهاتف</h3>
+                    <p>+218 [رقم الهاتف]</p>
+                </div>
+                <div class="contact-item">
+                    <h3>✉️ البريد الإلكتروني</h3>
+                    <p>info@alamadaalmumyz.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🌐 الموقع</h3>
+                    <p>www.alamadaalmumyz.com</p>
+                </div>
+            </div>
+            <a href="mailto:info@alamadaalmumyz.com" class="cta-button">أرسل لنا رسالة</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 المدى المميز - جميع الحقوق محفوظة</p>
+        <p>متخصصون في استيراد وسائل النقل وملحقاتها</p>
+    </footer>
+</body>
+</html>
